@@ -1,3 +1,14 @@
+TUGAS STRUKTUR DATA: implementasi Linked list, Stack, dan Queue
+Anggota Kelompok 3:
+1.	Muhammad Isra Aulia 2408107010006
+2.	Andre Alfaridzi 2408107010011
+3.	Khairul Fikri 2408107010032
+4.	Annisa Rahma Fathia 2408107010027
+5.	Illiza Khairamisa 2408107010017
+   
+DESKRIPSI SINGKAT PROGRAM:
+Program ini merupakan program Sistem Antrean Bank Sederhana yang mengkombinasikan tiga struktur data yaitu Linked List, Queue, dan Stack agar system antrean nasabah berjalan lebih efisien. Queue digunakan untuk mengelola antrean nasabah. Stack digunakan untuk mencatat Riwayat transaksi dan fitur pembatalan. Fitur utama yang terdapat di dalam program ini mencakup fitur menambahkan nasabah ke antrean, memproses layanan nasabah, menampilkan antrean saat ini, menampilkan Riwayat layanan, membatalkan transaksi terakhir, serta fitur keluar untuk mengakhiri program.
+
 ![Image](https://github.com/user-attachments/assets/167044ae-e088-48c7-a031-ddeb380e39f3)
 
 ![Image](https://github.com/user-attachments/assets/de531853-8ac5-4cfc-9d3a-8e6ca9a3194c)
