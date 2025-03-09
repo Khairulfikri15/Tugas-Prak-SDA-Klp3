@@ -124,3 +124,45 @@ int main() {
     
     int pilihan;
     char nama[50];
+    int layananPilihan;
+    char layanan[50];
+    
+    do {
+        printf("\n+---------------------------------------+\n");
+        printf("|        SISTEM ANTREAN BANK            |\n");
+        printf("+---------------------------------------+\n");
+        printf("| 1. Tambah Nasabah ke Antrean          |\n");
+        printf("| 2. Proses Nasabah                     |\n");
+        printf("| 3. Tampilkan Antrean Saat Ini         |\n");
+        printf("| 4. Tampilkan Riwayat Layanan          |\n");
+        printf("| 5. Batalkan Transaksi Terakhir (Undo) |\n");
+        printf("| 6. Keluar                             |\n");
+        printf("+---------------------------------------+\n");
+        
+        while (1) {
+            printf("  Pilihan Anda: ");
+            if (scanf("%d", &pilihan) != 1 || pilihan < 1 || pilihan > 6) {
+                printf("\nPilihan tidak valid! Silakan pilih angka antara 1 hingga 6.\n");
+                while (getchar() != '\n'); // Membersihkan buffer input
+            } else {
+                break;
+            }
+        }
+
+        getchar(); // Membersihkan newline dari buffer
+        
+        switch (pilihan) {
+            case 1:
+                printf("Masukkan nama nasabah: ");
+                fgets(nama, 50, stdin);
+                nama[strcspn(nama, "\n")] = 0;
+                
+                while (1) {
+                    printf("Pilih jenis layanan:\n  1. Setor Tunai\n  2. Tarik Tunai\n  3. Pembukaan Rekening\nPilihan (1-3): ");
+                    if (scanf("%d", &layananPilihan) != 1 || layananPilihan < 1 || layananPilihan > 3) {
+                        printf("\nPilihan tidak valid! Silakan pilih angka antara 1 hingga 3.\n");
+                        while (getchar() != '\n'); // Membersihkan buffer input
+                    } else {
+                        break;
+                    }
+                }
