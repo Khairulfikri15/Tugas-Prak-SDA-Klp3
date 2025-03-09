@@ -82,3 +82,45 @@ void displayQueue(Queue* q) {
     printf("| No.  | Nama Nasabah          | Layanan             |\n");
     printf("+------+-----------------------+---------------------+\n");
     while (temp) {
+        printf("| %-4d | %-21s | %-19s |\n", i++, temp->nama, temp->layanan);
+        temp = temp->next;
+    }
+    printf("+------+-----------------------+---------------------+\n");
+}
+
+// Fungsi untuk menampilkan riwayat layanan dengan waktu
+void displayStack(Stack* s) {
+    Nasabah* temp = s->top;
+    int i = 1;
+    printf("+------+-----------------------+---------------------+----------------------+\n");
+    printf("| No.  | Nama Nasabah          | Layanan             | Waktu Layanan        |\n");
+    printf("+------+-----------------------+---------------------+----------------------+\n");
+    while (temp) {
+        char waktuStr[20];
+        struct tm* timeinfo = localtime(&temp->waktu);
+        strftime(waktuStr, sizeof(waktuStr), "%d-%m-%Y %H:%M:%S", timeinfo);
+        printf("| %-4d | %-21s | %-19s | %-20s |\n", i++, temp->nama, temp->layanan, waktuStr);
+        temp = temp->next;
+    }
+    printf("+------+-----------------------+---------------------+----------------------+\n");
+}
+
+// Fungsi untuk membatalkan transaksi terakhir (Undo)
+void undoTransaction(Stack* s, Queue* q) {
+    Nasabah* last = pop(s);
+    if (last) {
+        enqueue(q, last->nama, last->layanan);
+        printf("Transaksi %s - %s dibatalkan dan dikembalikan ke antrean.\n", last->nama, last->layanan);
+    } else {
+        printf("Tidak ada transaksi yang bisa dibatalkan.\n");
+    }
+}
+
+int main() {
+    Queue antrean;
+    Stack riwayat;
+    initQueue(&antrean);
+    initStack(&riwayat);
+    
+    int pilihan;
+    char nama[50];
