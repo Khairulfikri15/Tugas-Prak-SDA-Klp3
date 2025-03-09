@@ -40,3 +40,45 @@ void enqueue(Queue* q, char* nama, char* layanan) {
     newNasabah->next = NULL;
     
     if (q->rear == NULL) {
+        q->front = q->rear = newNasabah;
+        return;
+    }
+    
+    q->rear->next = newNasabah;
+    q->rear = newNasabah;
+}
+
+// Fungsi dequeue (memproses nasabah dari antrean)
+Nasabah* dequeue(Queue* q) {
+    if (q->front == NULL) return NULL;
+    
+    Nasabah* temp = q->front;
+    q->front = q->front->next;
+    if (q->front == NULL) q->rear = NULL;
+    return temp;
+}
+
+// Fungsi push (menyimpan ke stack dengan waktu layanan)
+void push(Stack* s, Nasabah* nasabah) {
+    nasabah->waktu = time(NULL); // Mencatat waktu layanan
+    nasabah->next = s->top;
+    s->top = nasabah;
+}
+
+// Fungsi pop (mengambil data dari stack)
+Nasabah* pop(Stack* s) {
+    if (s->top == NULL) return NULL;
+    
+    Nasabah* temp = s->top;
+    s->top = s->top->next;
+    return temp;
+}
+
+// Menampilkan antrean saat ini
+void displayQueue(Queue* q) {
+    Nasabah* temp = q->front;
+    int i = 1;
+    printf("+------+-----------------------+---------------------+\n");
+    printf("| No.  | Nama Nasabah          | Layanan             |\n");
+    printf("+------+-----------------------+---------------------+\n");
+    while (temp) {
