@@ -166,3 +166,47 @@ int main() {
                         break;
                     }
                 }
+                getchar();
+                
+                if (layananPilihan == 1) strcpy(layanan, "Setor Tunai");
+                else if (layananPilihan == 2) strcpy(layanan, "Tarik Tunai");
+                else strcpy(layanan, "Pembukaan Rekening");
+                
+                enqueue(&antrean, nama, layanan);
+                printf("Nasabah %s berhasil ditambahkan ke antrean dengan layanan %s.\n", nama, layanan);
+                break;
+            
+            case 2:
+                {
+                    Nasabah* nasabah = dequeue(&antrean);
+                    if (nasabah) {
+                        printf("Memproses nasabah: %s - %s\n", nasabah->nama, nasabah->layanan);
+                        push(&riwayat, nasabah);
+                        printf("Layanan selesai diproses dan dipindahkan ke riwayat.\n");
+                    } else {
+                        printf("Antrean kosong.\n");
+                    }
+                }
+                break;
+            
+            case 3:
+                displayQueue(&antrean);
+                break;
+            
+            case 4:
+                displayStack(&riwayat);
+                break;
+                
+            case 5:
+                undoTransaction(&riwayat, &antrean);
+                break;
+                
+            case 6:
+                system("cls");
+                printf("Terima kasih telah menggunakan sistem antrean bank.\n");
+                break;
+        }
+    } while (pilihan != 6);
+    
+    return 0;
+}
